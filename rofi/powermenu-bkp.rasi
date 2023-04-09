@@ -10,9 +10,8 @@
 ## style-1   style-2   style-3   style-4   style-5
 
 # Current Theme
-# dir="$HOME/.config/rofi/powermenu/type-4/style-1.rasi"
-dir="$HOME/.config/rofi/powermenu/type-2/style-4.rasi"
-theme='style-4'
+dir="$HOME/.config/rofi/powermenu/type-4/style-1.rasi"
+theme='style-1'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
@@ -56,25 +55,16 @@ run_rofi() {
 # Execute Command
 run_cmd() {
 	selected="$(confirm_exit)"
-
 	if [[ "$selected" == "$yes" ]]; then
-		
 		if [[ $1 == '--shutdown' ]]; then
 			systemctl poweroff
-		
 		elif [[ $1 == '--reboot' ]]; then
 			systemctl reboot
-		
 		elif [[ $1 == '--suspend' ]]; then
-			betterlockscreen -l blur
-			amixer set Master mute
-			mpc -q pause
-			systemctl suspend
-			
-		elif [[ $1 == '--lock' ]]; then	
 			amixer set Master mute
 			betterlockscreen -l blur
-
+			# mpc -q pause
+			# systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
 				openbox --exit
@@ -101,12 +91,13 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		run_cmd	betterlockscreen -l
-		run_cmd	--lock
+		if [[ -x '/usr/bin/betterlockscreen' ]]; then
+			betterlockscreen -l
+		elif [[ -x '/usr/bin/i3lock' ]]; then
+			i3lock
+		fi
         ;;
     $suspend)
-		run_cmd	betterlockscreen -l
-		run_cmd	--lock
 		run_cmd --suspend
         ;;
     $logout)
