@@ -1,0 +1,11 @@
+set termguicolors
+source $HOME/.config/nvim/vim-plug/plugins.vim
+source $HOME/.config/nvim/themes/airline.vim
+luafile $HOME/.config/nvim/lua/plug-colorizer.lua
+"lua require'colorizer'.setup()
+syntax on
+set background=dark
+colorscheme darkthemenew
+"colorscheme  typewriter-night
+set number
+set guifont=LektonNerdFont:h12
