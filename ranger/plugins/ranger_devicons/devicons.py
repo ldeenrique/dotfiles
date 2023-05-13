@@ -243,7 +243,7 @@ file_node_extensions = {
     'xz'       : '',
     'yaml'     : '',
     'yml'      : '',
-    'zip'      : '',
+    'zip'      : '',
     'zsh'      : '',
 }
 
