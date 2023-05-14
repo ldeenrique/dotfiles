@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    background-color: rgba(26, 26, 26, 0.5);
+    background-color: #1a1a1a;
     border-bottom: 0px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
@@ -32,6 +32,7 @@ window#waybar.termite {
 window#waybar.chromium {
     background-color: #000000;
     border: none;
+    
 }
 
 button {
@@ -87,13 +88,14 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+
+
 #mpd {
     padding: 0 10px;
     color: #ffffff;
 }
 
-#window,
-#workspaces {
+#window,#workspaces {
     margin: 0 4px;
 }
 
@@ -108,16 +110,17 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #f5e0dc;
+    background-color: #8aadf4;
     color: #000000;
 }
 
+#battery {
+    background-color: #7dc4e4;
+    color: #000000; 
+}
+
 #battery.charging, #battery.plugged {
-    color: #ffffff;
+    color: #000000;
     background-color: #a6da95;
 }
 
@@ -143,33 +146,37 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: #f5a97f;
     color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #ffca99;
+    color: #000000;
 }
 
 #disk {
     background-color: #964B00;
+    color: #000000;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: #a6da96;
+    color: #000000;
 }
 
 #network {
-    background-color: #cba6f7;
+    background-color: #ee99a0;
     color: #000000;
 }
 
 #network.disconnected {
     background-color: #f53c3c;
+    color: #000000;
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
+    background-color: #ed8796;
     color: #000000;
 }
 
@@ -185,11 +192,13 @@ label:focus {
 
 #wireplumber.muted {
     background-color: #f53c3c;
+    color: #000000;
 }
 
 #custom-media {
     background-color: #66cc99;
-    color: #2a5c45;
+    /*color: #2a5c45;*/
+    color: #000000;
     min-width: 100px;
 }
 
@@ -202,11 +211,13 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #eed49f;
+    color: #000000;
 }
 
 #temperature.critical {
     background-color: #eb4d4b;
+    color: #000000;
 }
 
 #tray {
