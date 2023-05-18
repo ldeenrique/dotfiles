@@ -1,7 +1,7 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 17, // Waybar height (to be removed for auto height)
+    "height": 16, // Waybar height (to be removed for auto height)
     //"width": 20, // Waybar width
     "spacing": 3, // Gaps between modules (4px)
 
@@ -15,16 +15,17 @@
          "disable-scroll": true,
          "on-click": "activate",
          "all-outputs": true,
+         "spacing": 3,
          "format": "{name}: {icon}",
          "format-icons": {
-         "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
-             "urgent": "",
-             "focused": "",
-             "default": ""
+             "1": " ",
+             "2": " ",
+             "3": " ",
+             "4": " ",
+             "5": " ",
+             "urgent": " ",
+             "focused": " ",
+             "default": " "
          }
      },
     
