@@ -5,7 +5,8 @@
 }
 
 window#waybar {
-    background-color: #1a1a1a;
+    /*background-color: #1a1a1a;*/
+    background-color: rgba(0, 0, 0, 0.80);
     border-bottom: 0px solid rgba(100, 114, 125, 0.5);
     color: #ffffff;
     transition-property: background-color;
@@ -46,27 +47,31 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+    /*box-shadow: inset 0 -3px #ffffff;*/
 }
-
+   
 #workspaces button {
     padding: 0 15px;
     background-color: #000000;
-    color: #F0EAD6;
-    margin-left:3
+    color: #F0EAD6; 
+    border-radius: 7px;
+    margin: 2px 2px 3px 2px;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    color: #000000;
+    /*background: rgba(0, 0, 0, 1);
+    color: #000000;*/
 }
 
 #workspaces button.active {
-    background-color: #000000;
+    background-color: rgba(45, 45, 45, 1);
     color: #F0EAD6;
-    box-shadow: inset 0 -2px #ffffff;
+    /*box-shadow: inset 0 -2px #ffffff;**/
     padding: 0 15px;
-    margin-left:3
+    margin-left:3px;
+    border-radius: 7px;
+    margin: 2px 2px 3px 2px;
+
 }
 
 #workspaces button.urgent {
@@ -119,11 +124,19 @@ button:hover {
 #clock {
     background-color: #8aadf4;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+    margin-left:5px;
+
 }
 
 #battery {
-    background-color: #7dc4e4;
+    /*background-color: #c6a0f6;*/
+    background-color: #a6da95;
     color: #000000; 
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #battery.charging, #battery.plugged {
@@ -153,13 +166,19 @@ label:focus {
 }
 
 #cpu {
-    background-color: #f5a97f;
+    background-color: #ea999c;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #memory {
-    background-color: #ffca99;
+    background-color: #eed49f;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #disk {
@@ -170,11 +189,17 @@ label:focus {
 #backlight {
     background-color: #a6da96;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #network {
-    background-color: #ee99a0;
+    background-color: #a6e3a1;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #network.disconnected {
@@ -183,13 +208,18 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #ed8796;
+    background-color: #cba6f7;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
 }
 
 #pulseaudio.muted {
     background-color: #90b1b1;
     color: #2a5c45;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #wireplumber {
@@ -218,8 +248,11 @@ label:focus {
 }
 
 #temperature {
-    background-color: #eed49f;
+    background-color: #b7bdf8;
     color: #000000;
+    border-radius: 7px;
+    margin: 2px 0px 3px 0px;
+
 }
 
 #temperature.critical {
