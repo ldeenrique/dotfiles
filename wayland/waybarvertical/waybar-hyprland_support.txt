@@ -1,0 +1,17 @@
+i had a similar issue with waybar-hyprland during build.
+"error during build exit 4"
+
+basically is caused by gcc and gcc-libs packages.
+so downgrade to 12.2.1-4 downloading both packages manually from
+https://archive.archlinux.org/
+
+then, cd Downloads
+sudo pacman -U gcc-12.2.1-4-x86_64.pkg.tar.zst gcc-libs-12.2.1-4-x86_64.pkg.tar.zst
+then, once is downgraded, install
+yay -S waybar-hyprland
+
+once installed, update gcc and gcc libs if you want
+sudo pacman -S gcc gcc-libs
+
+btw source:
+https://github.com/Alexays/Waybar/issues/2177
