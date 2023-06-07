@@ -1,9 +1,9 @@
 {
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 16, // Waybar height (to be removed for auto height)
-    //"width": 20, // Waybar width
-    "spacing": 5, // Gaps between modules (4px)
+    "position": "left", // Waybar position (top|bottom|left|right) 
+    //"height": 16, // Waybar height (to be removed for auto height)
+    "width": 10, // Waybar width
+    "spacing": 10, // Gaps between modules (4px)
 
     // Choose the order of the modules
     "modules-left":   [ "clock","wlr/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
@@ -16,7 +16,18 @@
          "on-click": "activate",
          "all-outputs": true,
          "spacing": 3,
-         "format": "{name}: {icon}",
+         "persistent_workspaces":{
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": []
+         },
+         "format": "{icon}",
          "format-icons": {
              "1": " ",
              "2": " ",
@@ -25,8 +36,9 @@
              "5": " ",
              "urgent": " ",
              "focused": " ",
-             "default": " "
-         }
+             "default": " ",
+         },
+        "rotate":270
      },
     
     "keyboard-state": {
@@ -86,24 +98,29 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%d-%m-%y}"
+        "format-alt": "{:%d-%m-%y}",
+        "rotate":270
     },
     "cpu": {
-        "format": "{usage}%  ",
-        "tooltip": false
+        //"format": "{usage}%  ",
+        "format": " {usage}%",
+        "tooltip": false,
+         "rotate":270
     },
     "memory": {
-        "format": "{}% 󱑜 " 
+        "format": "󱑜 {}% ",
+         "rotate":270
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C ",
-        "format-icons": ["", "", ""]
+        "format": " {temperatureC}°",
+        "format-icons": ["", "", ""],
+        "rotate":270
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -112,7 +129,7 @@
     },
     "battery": {
         "states": {
-            // "good": 95,
+            "good": 95,
             "warning": 30,
             "critical": 15
         },
@@ -122,7 +139,8 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "],
+        "rotate":270
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -130,12 +148,13 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         //"format-wifi": "{essid} ({signalStrength}%) ",
-        "format-wifi": "{signalStrength}% ",
+        "format-wifi": "{signalStrength}%  ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Null ⚠",
-        //"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "rotate":270
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -143,7 +162,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "{format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -153,9 +172,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": ["", " ", " "]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+
+         "rotate":270
     },
     "custom/media": {
         "format": "{icon} {}",
