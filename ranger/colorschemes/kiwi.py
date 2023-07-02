@@ -10,7 +10,7 @@ from ranger.gui.color import default_colors, reverse, bold, normal, default
 
 
 # pylint: disable=too-many-branches,too-many-statements
-class vscode(ColorScheme):
+class kiwi(ColorScheme):
     progress_bar_color = 232
 
     def use(self, context):
@@ -32,10 +32,10 @@ class vscode(ColorScheme):
                 fg = 248
             if context.image:
                 #IMAGENES
-                fg = 189
+                fg = 194
             if context.video:
                 #VIDEOS
-                fg = 181
+                fg = 153
             if context.audio:
                 #AUDIOS
                 fg = 109
@@ -45,18 +45,18 @@ class vscode(ColorScheme):
             if context.container:
                 #ARCHIVOS COMPRIMIDOS
                 #attr |= bold
-                fg = 182
+                fg = 146
             if context.directory:
                 #CARPETAS
                 attr |= bold
-                fg = 111
-                #fg = 111
+                #fg = 194 verde color culo
+                fg = 251
             elif context.executable and not \
                     any((context.media, context.container,
                          context.fifo, context.socket)):
                 #EJECUTABLES COMO EXE,BAT,ETC
                 #attr |= bold
-                fg = 115
+                fg = 230
 
 
 
@@ -69,18 +69,19 @@ class vscode(ColorScheme):
                     attr |= bold
             if context.link:
                 #ARCHIVOS ENLAZADOS A CARPETAS U OTRA COSA
-                fg = 150 if context.good else 116
+                fg = 194 if context.good else 183
             # MARCAR CON T
             if context.tag_marker and not context.selected:
                 attr |= normal
                 if fg in (174, 95):
-                    fg = 248
+                    fg = 193
                 else:
+                    #este es por cierto
                     fg = 189
 
             #CONTEXTO SEELECCIONADO
             if not context.selected and (context.cut or context.copied):
-                fg = 183
+                fg = 194
                 #bg = 234
 
             #CARPETAS SELECCIONADAS
@@ -89,7 +90,7 @@ class vscode(ColorScheme):
                     attr |= normal
                 if context.marked:
                     attr |= normal
-                    fg = 108
+                    fg = 194
             if context.badinfo:
                 if attr & reverse:
                     bg = 95
@@ -102,7 +103,7 @@ class vscode(ColorScheme):
             #Usuario+maquina
             if context.hostname:
                 attr |= bold
-                fg = 110 if context.bad else 110
+                fg = 194 if context.bad else 194
             #mostrar directorio actual
             elif context.directory:
                 fg = 189
@@ -111,16 +112,16 @@ class vscode(ColorScheme):
                     bg = 108
             #folders linkeados
             elif context.link:
-                fg = 116
+                fg = 183
 
         #BARRA DE ESTATUS
         elif context.in_statusbar:
             #permisos
             if context.permissions:
                 if context.good:
-                    fg = 115
+                    fg = 147
                 elif context.bad:
-                    fg = 115
+                    fg = 147
             if context.marked:
                 attr |= bold | reverse
                 fg = 223
