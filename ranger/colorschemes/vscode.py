@@ -5,13 +5,23 @@
 # Copyright (C) 2009-2013  Roman Zimbelmann <hut@lepus.uberspace.de>
 # This software is distributed under the terms of the GNU GPL version 3.
 
+# ESTE ARCHIVO ES PERTENECIENTE AL IVAYLO KUZEV, YO SOLO LO MODIFIQUE Y ANADI
+# COMENTARIOS PARA HACERLO MAS ENTENDIBLE PARA MI Y PARA QUIEN LO QUIERA VER
+# TODOS LOS CREDITOS PARA EL, QUIEN ORIGINALMENTE CREO ESTE ARCHIVO (O ALMENOS LO TRAJO A LA LUZ)
+
 from ranger.gui.colorscheme import ColorScheme
 from ranger.gui.color import default_colors, reverse, bold, normal, default
 
 
+
+'''     TODO ESTO SE ENCUENTRA AL ENTRAR A RANGER, CARPETAS, ARCHIVOS, ETC
+        EL RESTO DE CONFIG 'AVANZADA' SE ENCUENTRA MAS ABAJO
+
+'''
+
 # pylint: disable=too-many-branches,too-many-statements
 class vscode(ColorScheme):
-    progress_bar_color = 232
+    progress_bar_color = 232; #COLOR DE LA BARRA DE PROGRESO (RECOMIENDO NEGRO 232)
 
     def use(self, context):
         fg, bg, attr = default_colors
@@ -19,47 +29,36 @@ class vscode(ColorScheme):
         if context.reset:
             return default_colors
 
+        #-----------COLORES NORMALES BASICOS----------
         elif context.in_browser:
             if context.selected:
                 attr = reverse
             else:
                 attr = normal
             if context.empty or context.error:
-                #FOLDER VACIO
-                fg = 210
+                fg = 210;   #FOLDER VACIO (letras rojas "empty")
             if context.border:
-                #SEPARADOR
-                fg = 248
+                fg = 248;   #SEPARADOR (bordes blancos entre carpetas)
             if context.image:
-                #IMAGENES
-                fg = 189
+                fg = 189;   #IMAGENES (png,jpeg,jpg,raw,etc)
             if context.video:
-                #VIDEOS
-                fg = 181
+                fg = 181;   #VIDEOS (mp4,mov,mkv,etc)
             if context.audio:
-                #AUDIOS
-                fg = 109
+                fg = 109;   #AUDIOS (mp3,ogg,etc)
             if context.document:
-                #CUALQUIER ARCHIVO
-                fg = 189
+                fg = 189;   #ARCHIVOS (txt,docx,tar,config,etc)
             if context.container:
-                #ARCHIVOS COMPRIMIDOS
-                #attr |= bold
-                fg = 182
+                fg = 182;   #COMPRIMIDOS (zip,rar,tgzip,etc)
             if context.directory:
-                #CARPETAS
+                fg = 111;   #CARPETAS (folders)
                 attr |= bold
-                fg = 111
-                #fg = 111
             elif context.executable and not \
                     any((context.media, context.container,
                          context.fifo, context.socket)):
-                #EJECUTABLES COMO EXE,BAT,ETC
-                #attr |= bold
-                fg = 115
+                fg = 115;   #EJECUTABLES (exe,bat,sh,msdos,etc)
 
-
-
+            #NO SE PARA QUE SIRVE ESTO DE SOCKET, NO CREO QUE SEA NECESARIO MODIFICARLO
+            #NUNCA ENCONTRÉ EN QUE SITUACION SE ACTIVAN ESOS COLORES
             if context.socket:
                 fg = 180
                 attr |= bold
@@ -67,63 +66,64 @@ class vscode(ColorScheme):
                 fg = 144
                 if context.device:
                     attr |= bold
+
             if context.link:
-                #ARCHIVOS ENLAZADOS A CARPETAS U OTRA COSA
-                fg = 150 if context.good else 116
-            # MARCAR CON T
+                fg = 150 if context.good else 116; #CARPETAS/ARCHIVOS ENLAZADOS
+
+            #ESTO ES PARA MARCAR CON T CUALQUIER ARCHIVO, AMBAS CONDICIONES EN <IF-ELSE>
+            #DEBERIAN MARCARSE CON EL MISMO COLOR, YO LO HAGO POR SEGURIDAD
             if context.tag_marker and not context.selected:
                 attr |= normal
                 if fg in (174, 95):
-                    fg = 248
+                    fg = 189; #MARCAR CON T
                 else:
-                    fg = 189
+                    fg = 189; #MARCAR CON T
 
-            #CONTEXTO SEELECCIONADO
+
+        #-------------CONTEXTO SEELECCIONADO-----------
             if not context.selected and (context.cut or context.copied):
-                fg = 183
-                #bg = 234
+                fg = 183;   #COLOR AL CORTAR/COPIAR CARPETAS-ARCHIVOS
+                #bg = 234;   #COLOR DE BACKGROUND OPCIONAL (RECOMIENDO NO USARLO)
 
-            #CARPETAS SELECCIONADAS
             if context.main_column:
                 if context.selected:
                     attr |= normal
                 if context.marked:
                     attr |= normal
-                    fg = 108
+                    fg = 108; #SELECCIONAR CARPETAS (CON TECLA ESPACIO)
             if context.badinfo:
                 if attr & reverse:
-                    bg = 95
+                    bg = 95; #CREO QUE ESTE NO HACE NADA
                 else:
-                    fg = 95
-        
-        #BARRAS DE TITULO
+                    fg = 95; #CREO QUE ESTE NO HACE NADA
+
+
+        #-------------TITLEBAR---------
         elif context.in_titlebar:
-            #attr |= bold
-            #Usuario+maquina
+            #attr |= bold; #ATRIBUTO BOLD PARA LA BARRA <USUARIO+HOST>
             if context.hostname:
                 attr |= bold
-                fg = 110 if context.bad else 110
-            #mostrar directorio actual
+                fg = 110 if context.bad else 110 #COLOR DEL USUARIO+HOST
             elif context.directory:
-                fg = 189
+                fg = 189; #COLOR DE LA RUTA DEL DIRECTORIO ACTUAL (EN LA TITLEBAR)
             elif context.tab:
                 if context.good:
-                    bg = 108
+                    bg = 108; #COLOR DE LAS TABS (AL PRESIONAR CTRL+N)
             #folders linkeados
             elif context.link:
-                fg = 116
+                fg = 116; #COLOR DE FOLDERS LINKEADOS EN EL DIR ACTUAL (TITLEBAR)
 
-        #BARRA DE ESTATUS
+
+        #------------BARRA DE ESTATUS-----
         elif context.in_statusbar:
-            #permisos
             if context.permissions:
                 if context.good:
-                    fg = 115
+                    fg = 115; #PERMISOS EN LA TITLEBAR
                 elif context.bad:
-                    fg = 115
+                    fg = 115; #PERMISOS EN LA TITLEBAR (POR SI ACASO)
             if context.marked:
                 attr |= bold | reverse
-                fg = 223
+                fg = 223; #LETRAS <MRK> AL MARCAR UN ARCHIVO CON ESPACIO
             if context.message:
                 if context.bad:
                     attr |= bold
@@ -137,6 +137,8 @@ class vscode(ColorScheme):
                 fg = 144
                 attr &= ~bold
 
+
+        #------------INFORMACION NO UTIL(CREO)-----------
         if context.text:
             if context.highlight:
                 attr |= reverse
